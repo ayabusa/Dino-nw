@@ -32,13 +32,13 @@ LDFLAGS += -flinker-output=nolto-rel
 endif
 
 .PHONY: build
-build: output/periodic.nwa
+build: output/Dino.nwa
 
 .PHONY: check
-check: output/periodic.bin
+check: output/Dino.bin
 
 .PHONY: run
-run: output/periodic.nwa
+run: output/Dino.nwa
 	@echo "INSTALL $<"
 	$(Q) $(NWLINK) install-nwa $<
 
@@ -50,7 +50,7 @@ output/%.elf: output/%.nwa
 	@echo "ELF     $@"
 	$(Q) $(NWLINK) nwa-elf $< $@
 
-output/periodic.nwa: output/main.o output/icon.o
+output/Dino.nwa: output/main.o output/icon.o
 	@echo "LD      $@"
 	$(Q) $(CC) $(CPPFLAGS) $(CFLAGS) -Wl,--relocatable -nostartfiles $(LDFLAGS) $^ -o $@
 
